@@ -3,21 +3,23 @@ using UnityEngine.UI;
 
 public class BuyDoodles : MonoBehaviour
 {
+    public float totalDoodles = 0.0f;
+    public float amountPerClick = 1.0f;
     public Text score;
 
     public void Start()
     {
-        score.text = DoodleCounterManager.totalDoodles.ToString();
+        score.text = totalDoodles.ToString();
     }
 
     public void AddDoodles()
     {
-        DoodleCounterManager.totalDoodles++;
-        PlayerPrefs.SetInt("Total Doodles", DoodleCounterManager.totalDoodles);
+        totalDoodles += amountPerClick;
+        PlayerPrefs.SetFloat("Total Doodles", totalDoodles);
     }
 
     public void GetDoodles()
     {
-        score.text = PlayerPrefs.GetInt("Total Doodles").ToString();
+        score.text = PlayerPrefs.GetFloat("Total Doodles").ToString();
     }
 }
